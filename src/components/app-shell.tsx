@@ -21,17 +21,17 @@ const navigation = [
   },
   {
     label: "News credibility",
-    href: "/verify/news",
-    number: "03",
-    description: "Evidence-led analysis",
-    available: false,
+href: "/news",
+number: "03",
+description: "Evidence-led analysis",
+available: true,
   },
   {
     label: "Image screening",
-    href: "/verify/image",
-    number: "04",
-    description: "Image integrity checks",
-    available: false,
+href: "/image",
+number: "04",
+description: "Image file screening",
+available: true,
   },
 ];
 

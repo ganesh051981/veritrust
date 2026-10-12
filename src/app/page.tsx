@@ -11,22 +11,24 @@ const modules = [
     available: true,
     icon: "▤",
   },
+  
   {
     number: "02",
     title: "News credibility",
     description:
       "Examine articles for credibility-related warning signals and evidence.",
-    status: "Planned",
-    available: false,
+    status: "Textual signal analysis",
+    available: true,
     icon: "◉",
   },
+
   {
     number: "03",
     title: "Image screening",
     description:
       "Screen images for potential signs of manipulation.",
     status: "Planned",
-    available: false,
+    available: true,
     icon: "▧",
   },
 ];
@@ -51,7 +53,7 @@ const steps = [
 
 export default function Home() {
   return (
-    <main className="min-h-screen overflow-hidden bg-background text-foreground">
+    <main className="min-h-screen overflow-hidden bg-[#f7f8f4] text-[#172b23]">
       {/* Navigation */}
       <header className="relative z-10 border-b border-border/70 bg-background/90">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
@@ -93,8 +95,10 @@ export default function Home() {
           className="pointer-events-none absolute inset-0 -z-10"
           style={{
             backgroundImage:
-              "radial-gradient(ellipse at 78% 20%, rgba(39,108,79,0.11), transparent 38%), linear-gradient(rgba(23,74,58,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(23,74,58,0.035) 1px, transparent 1px)",
-            backgroundSize: "auto, 36px 36px, 36px 36px",
+              
+"radial-gradient(ellipse at 78% 20%, rgba(39,108,79,0.16), transparent 38%), radial-gradient(ellipse at 15% 80%, rgba(226,232,213,0.32), transparent 42%), linear-gradient(rgba(23,74,58,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(23,74,58,0.04) 1px, transparent 1px)",
+
+            backgroundSize: "auto, auto, 32px 32px, 32px 32px",
           }}
         />
 
@@ -188,7 +192,13 @@ export default function Home() {
                     <div key={module.number}>
                       {module.available ? (
                         <Link
-                          href="/verify/document"
+                          href={
+  module.title === "News credibility"
+    ? "/news"
+    : module.title === "Image screening"
+      ? "/image"
+      : "/verify/document"
+}
                           className="group flex items-start gap-4 rounded-xl border border-primary/20 bg-[#f7faf6] p-4 transition duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-[#eff5ee] hover:shadow-md"
                         >
                           <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary text-lg text-white shadow-sm">
@@ -325,8 +335,10 @@ export default function Home() {
                 <div key={module.number}>
                   {module.available ? (
                     <Link
-                      href="/verify/document"
-                      className="group flex h-full min-h-[245px] flex-col rounded-2xl border border-primary/20 bg-[#fbfcf9] p-6 transition duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5"
+                      href={module.title === "News credibility" ? "/news" : "/verify/document"}
+                      className=
+"group flex h-full min-h-[260px] flex-col rounded-2xl border border-[#e1e7dd] bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#8ca995] hover:shadow-xl hover:shadow-[#173d32]/10"
+
                     >
                       {content}
                     </Link>
